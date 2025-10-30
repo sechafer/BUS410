@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samuel Chacón - Software Developer | Icebreaker Discussion</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 25%, #0d4f3c 50%, #76b900 75%, #000000 100%);
+            background-attachment: fixed;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid #76b900;
+            box-shadow: 0 4px 20px rgba(118, 185, 0, 0.2);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #76b900, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 10px rgba(118, 185, 0, 0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: #76b900;
+            text-shadow: 0 0 10px rgba(118, 185, 0, 0.7);
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(45deg, rgba(0,0,0,0.7), rgba(118,185,0,0.2));
+            margin-top: 0;
+            padding-top: 60px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(118,185,0,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>') repeat;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(10px, 10px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .profile-pic {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #76b900, #00d4ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 80px;
+            box-shadow: 0 0 40px rgba(118, 185, 0, 0.5);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #76b900, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 5px rgba(118, 185, 0, 0.5)); }
+            to { filter: drop-shadow(0 0 20px rgba(118, 185, 0, 0.8)); }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #00d4ff;
+            margin-bottom: 10px;
+        }
+
+        .location {
+            font-size: 1.1rem;
+            color: #76b900;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #76b900;
+            text-shadow: 0 0 10px rgba(118, 185, 0, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .highlight-box {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+            border: 1px solid rgba(118, 185, 0, 0.3);
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-box:hover {
+            border-color: #76b900;
+            box-shadow: 0 10px 30px rgba(118, 185, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .highlight-box h3 {
+            color: #76b900;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .highlight-box p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, rgba(118, 185, 0, 0.1), rgba(0, 0, 0, 0.3));
+            border-radius: 15px;
+            padding: 30px;
+            border-left: 4px solid #76b900;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card:hover {
+            background: linear-gradient(135deg, rgba(118, 185, 0, 0.2), rgba(0, 0, 0, 0.4));
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(118, 185, 0, 0.2);
+        }
+
+        .card h4 {
+            color: #76b900;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card li {
+            padding: 10px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .card li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #76b900;
+            font-weight: bold;
+        }
+
+        .evidence-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .evidence-item {
+            background: rgba(118, 185, 0, 0.1);
+            border: 2px solid #76b900;
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .evidence-item:hover {
+            background: rgba(118, 185, 0, 0.15);
+            transform: scale(1.05);
+        }
+
+        .evidence-item strong {
+            color: #00d4ff;
+            font-size: 1.1rem;
+        }
+
+        .stat-box {
+            display: inline-block;
+            background: linear-gradient(45deg, #76b900, #5a8d00);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            margin: 10px 5px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(118, 185, 0, 0.4);
+        }
+
+        .footer {
+            background: rgba(0, 0, 0, 0.95);
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 80px;
+            border-top: 3px solid #76b900;
+            position: relative;
+            z-index: 2;
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: #76b900;
+            z-index: 1001;
+            transition: width 0.3s ease;
+        }
+
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #76b900;
+            border-radius: 50%;
+            animation: float-particle 15s linear infinite;
+        }
+
+        @keyframes float-particle {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) translateX(0);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-10vh) translateX(100px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+
+            .profile-pic {
+                width: 140px;
+                height: 140px;
+                font-size: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-indicator" id="scroll-indicator"></div>
+    <div class="floating-particles" id="particles"></div>
+
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">Samuel Chacón</div>
+            <ul class="nav-links">
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#fun">Fun & Background</a></li>
+                <li><a href="#dg-success">DG Success</a></li>
+                <li><a href="#dg-challenges">DG Challenges</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="profile-pic">👨‍💻</div>
+            <h1>Samuel Chacón</h1>
+            <div class="subtitle">Software Development Student</div>
+            <div class="location">📍 Venezuela | Aspiring Full-Stack Developer</div>
+            <p style="font-size: 1.1rem; margin-bottom: 20px;">Taking Advanced Business Management to strengthen my entrepreneurial mindset for my second degree in Business starting January 2026</p>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            
+            <div class="highlight-box">
+                <h3>🎯 My Journey</h3>
+                <p>
+                    I'm a Venezuelan software development student who has just completed all credits for my current program. Rather than waiting, I'm leveraging this time to take BUS 410 - Principles of Advanced Business Management to build essential business acumen for my entrepreneurial goals. This strategic decision aligns with my plan to start a second degree in Business Administration in January 2026.
+                </p>
+                <p style="margin-top: 15px;">
+                    My dual focus on technology and business reflects my vision: to become a tech entrepreneur who understands both the development and business sides of creating innovative solutions.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="fun" class="section">
+        <div class="container">
+            <h2 class="section-title">What I Love to Do</h2>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <h4>🎮 Gaming & Tech Exploration</h4>
+                    <ul>
+                        <li>Passionate about gaming and understanding game architecture</li>
+                        <li>Love exploring emerging technologies and their applications</li>
+                        <li>Active in tech communities and online forums</li>
+                        <li>Constantly learning new programming languages and frameworks</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h4>🌍 Cultural & Personal Growth</h4>
+                    <ul>
+                        <li>Proud Venezuelan - deeply connected to my heritage</li>
+                        <li>Interested in how technology bridges geographical boundaries</li>
+                        <li>Enjoy mentoring others in programming basics</li>
+                        <li>Fascinated by business strategy and entrepreneurship</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="surprise" class="section">
+        <div class="container">
+            <h2 class="section-title">Something That Might Surprise You</h2>
+            
+            <div class="highlight-box">
+                <h3>💡 The Unexpected Twist</h3>
+                <p>
+                    While most people might assume a software developer pursues only technical degrees, I'm actively taking a business management course and planning a full business degree. What might surprise you is that <strong>I view programming and business as complementary skills, not competing interests.</strong>
+                </p>
+                <p style="margin-top: 15px;">
+                    I've seen countless brilliant developers fail in business because they couldn't understand market dynamics, financial management, or organizational strategy. Conversely, I've met business leaders who lack technical literacy and miss critical opportunities. I'm intentionally building both skill sets because I believe the future belongs to <strong>tech-savvy business leaders and business-minded technologists</strong>.
+                </p>
+                <p style="margin-top: 15px;">
+                    My "surprise factor": I'm not just coding to code—I'm coding to understand how to build sustainable, profitable, and impactful technology businesses.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="dg-success" class="section">
+        <div class="container">
+            <h2 class="section-title">What Made Dollar General Successful</h2>
+            
+            <div class="highlight-box">
+                <h3>📊 Evidence-Based Analysis</h3>
+                <p>Dollar General's success through 2005 was built on several key factors:</p>
+            </div>
+
+            <div class="evidence-grid">
+                <div class="evidence-item">
+                    <strong>Explosive Growth Rate</strong>
+                    <p style="margin-top: 10px;">The company opened over 700 stores annually, demonstrating extraordinary market confidence and execution capability. This aggressive expansion was profitable during the growth phase.</p>
+                </div>
+
+                <div class="evidence-item">
+                    <strong>Outstanding Revenue Growth</strong>
+                    <p style="margin-top: 10px;">Sales growth reached <span class="stat-box">+12.0%</span> in 2005, with consistent double-digit expansion throughout the period, indicating strong market demand for the low-cost retail model.</p>
+                </div>
+
+                <div class="evidence-item">
+                    <strong>Exceptional Gross Margins</strong>
+                    <p style="margin-top: 10px;">Gross margin peaked at <span class="stat-box">29.5%</span> in 2004 and remained high at <span class="stat-box">29.4%</span> in 2005, showing the company's ability to source products efficiently and maintain pricing power.</p>
+                </div>
+
+                <div class="evidence-item">
+                    <strong>Strong Operating Margins</strong>
+                    <p style="margin-top: 10px;">Operating margins of <span class="stat-box">7.0%</span> in 2004-2005 demonstrated operational excellence and the scalability of their business model—rare for discount retailers.</p>
+                </div>
+
+                <div class="evidence-item">
+                    <strong>Efficient Asset Utilization</strong>
+                    <p style="margin-top: 10px;">Asset-to-Sales ratios of approximately 34% showed the company generated strong sales with relatively lean asset investments, maximizing return on assets.</p>
+                </div>
+
+                <div class="evidence-item">
+                    <strong>Market Model Advantage</strong>
+                    <p style="margin-top: 10px;">The "low-cost, high-convenience" model filled a market gap between Walmart's scale and Family Dollar's presence, creating a unique competitive advantage in underserved communities.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 40px;">
+                <h3>📈 Key Success Metrics Summary</h3>
+                <div style="margin-top: 20px;">
+                    <div class="stat-box">Sales CAGR: 7.5% (2003-2007)</div>
+                    <div class="stat-box">Peak Gross Margin: 29.5% (2004)</div>
+                    <div class="stat-box">Peak Operating Margin: 7.0% (2004-2005)</div>
+                    <div class="stat-box">700+ Stores Opened Annually</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="dg-challenges" class="section">
+        <div class="container">
+            <h2 class="section-title">Challenges Faced by Dollar General</h2>
+            
+            <div class="highlight-box">
+                <h3>⚠️ Critical Operational Breakdown</h3>
+                <p>Between 2005 and 2007, Dollar General encountered severe challenges that nearly destroyed the company's profitability:</p>
+            </div>
+
+            <div class="evidence-grid">
+                <div class="evidence-item">
+                    <strong>Catastrophic Margin Decline</strong>
+                    <p style="margin-top: 10px;">Operating margin collapsed from <span class="stat-box">6.5%</span> in 2005 to just <span class="stat-box">2.7%</span> in 2006—a devastating <span class="stat-box">-59.5%</span> decline in pre-tax income. This signals fundamental operational problems.</p>
+                </div>
+
+                <div class="evidence-item">
+                    <strong>Gross Margin Erosion</strong>
+                    <p style="margin-top: 10px;">Gross margin dropped from <span class="stat-box">29.4%</span> to <span class="stat-box">25.8%</span>, indicating either poor supplier relationships, excessive inventory markdowns, or product mix deterioration—all suggesting operational mismanagement.</p>
+                </div>
+
+                <div class="evidence-item">
+                    <strong>Growth Deceleration</strong>
+                    <p style="margin-top: 10px;">Sales growth slowed from <span class="stat-box">+12.0%</span> to <span class="stat-box">+6.8%</span>, with same-store sales stagnating at <span class="stat-box">2-3%</span> versus the historical <span class="stat-box">5-8%</span> benchmark. This indicates new stores were underperforming.</p>
+                </div>
+
+                <div class="evidence-item">
+                    <strong>Inventory Management Crisis</strong>
+                    <p style="margin-top: 10px;">Back rooms were "overflowing with product" due to a failing pack-away strategy. Inventory turnover remained weak at <span class="stat-box">4.7</span>, below peer benchmarks, suggesting obsolete or slow-moving merchandise consuming capital.</p>
+                </div>
+
+                <div class="evidence-item">
+                    <strong>Operational Inefficiency</strong>
+                    <p style="margin-top: 10px;">The case documents inadequate back-office space, poor floor plan adherence, and restocking delays. This created a chaotic retail environment that frustrated customers and damaged brand perception.</p>
+                </div>
+
+                <div class="evidence-item">
+                    <strong>Expansion Without Foundation</strong>
+                    <p style="margin-top: 10px;">Over 700 stores opened annually, but operations only existed in fewer than 30 U.S. states. The company expanded faster than its support infrastructure could handle—a classic case of growth outpacing operational capacity.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 40px;">
+                <h3>📉 The Challenge Summary: Root Causes</h3>
+                <ul style="margin-top: 20px;">
+                    <li><strong>Over-expansion without consolidation:</strong> Too many stores opened before operations stabilized</li>
+                    <li><strong>Operational inefficiency:</strong> Backend infrastructure couldn't support aggressive growth</li>
+                    <li><strong>Low-margin product mix:</strong> Higher proportion of consumables eroded profitability</li>
+                    <li><strong>Competitive pressure:</strong> Walmart, Target, and Family Dollar intensified price wars</li>
+                    <li><strong>Inventory dysfunction:</strong> Pack-away strategy created logistical nightmares</li>
+                    <li><strong>ROA/ROE decline:</strong> Capital productivity decreased significantly year-over-year</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 40px; background: linear-gradient(135deg, rgba(118, 185, 0, 0.15), rgba(0, 0, 0, 0.4));">
+                <h3>💼 Business Lesson</h3>
+                <p>
+                    This case brilliantly illustrates a fundamental business principle: <strong>sustainable growth requires operational excellence to precede or accompany expansion.</strong> Dollar General's mistake wasn't being ambitious—it was being operationally unprepared for that ambition. The company learned that scale without efficiency is merely expensive failure at a larger magnitude.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            
+            <div class="highlight-box" style="text-align: center;">
+                <h3>Open to Collaboration & Discussion</h3>
+                <p style="font-size: 1.1rem;">
+                    I'm eager to engage with classmates on business strategy, technology trends, and case analysis. Please feel free to comment on my insights regarding Dollar General, and I'd love to read and respond to your perspectives as well.
+                </p>
+                <p style="margin-top: 20px; color: #76b900; font-weight: bold;">
+                    Looking forward to this semester! 🚀
+                </p>
+            </div>
+
+            <div class="grid-2" style="margin-top: 40px;">
+                <div class="card" style="text-align: center; border-left: none;">
+                    <h4>📱 WhatsApp</h4>
+                    <a href="https://wa.me/5511933880101" target="_blank" style="display: inline-block; margin-top: 15px; background: linear-gradient(45deg, #76b900, #5a8d00); color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; font-weight: bold; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(118, 185, 0, 0.4);">
+                        +55 11 93388-0101
+                    </a>
+                </div>
+
+                <div class="card" style="text-align: center; border-left: none;">
+                    <h4>💼 LinkedIn</h4>
+                    <a href="https://www.linkedin.com/in/sechafer/" target="_blank" style="display: inline-block; margin-top: 15px; background: linear-gradient(45deg, #00d4ff, #0099cc); color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; font-weight: bold; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);">
+                        View My Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Samuel Chacón | Software Developer & Business Student | Venezuela 🇻🇪</p>
+            <p style="margin-top: 10px; color: #76b900;">BUS 410 - Principles of Advanced Business Management</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll indicator
+        window.addEventListener('scroll', () => {
+            const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.getElementById('scroll-indicator').style.width = scrolled + '%';
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Floating particles
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            document.getElementById('particles').appendChild(particle);
+
+            setTimeout(() => {
+                particle.remove();
+            }, 25000);
+        }
+
+        setInterval(createParticle, 500);
+
+        for (let i = 0; i < 15; i++) {
+            setTimeout(createParticle, i * 100);
+        }
+
+        // Intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card, .evidence-item, .highlight-box').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(50px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
