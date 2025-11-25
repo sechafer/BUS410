@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Broulim’s Competitive Advantage Analysis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .reveal h1, .reveal h2 { color: #004d99; }
+    .chart-container { width: 80%; margin: auto; }
+    .cite { font-size: 0.7em; color: #666; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide 1: Intro -->
+      <section>
+        <h1>Broulim’s Competitive Advantage</h1>
+        <h3>Strategic Analysis & Recommendations</h3>
+        <p>Using financial benchmarking and the 4+3 framework</p>
+        <p><strong>Goal:</strong> Identify how Broulim’s can compete like Sprouts — with a <em>premium</em> edge.</p>
+      </section>
+
+      <!-- Slide 2: Competitor Overview -->
+      <section>
+        <h2>Competitor Overview (2024)</h2>
+        <div class="chart-container">
+          <canvas id="marginChart"></canvas>
+        </div>
+        <p class="cite">Sources: Walmart, Sprouts, Kroger Annual Reports 2024</p>
+      </section>
+
+      <!-- Slide 3: Advantage Type -->
+      <section>
+        <h2>Who Has the Advantage?</h2>
+        <ul>
+          <li><strong>Sprouts</strong> has the <strong>highest operating margin</strong>: 6.7%</li>
+          <li><strong>Type:</strong> <em>Premium Advantage</em> — not lower cost, but higher price</li>
+          <li>Customers pay more for <strong>organic, fresh, and niche</strong></li>
+        </ul>
+      </section>
+
+      <!-- Slide 4: 4+3 Framework -->
+      <section>
+        <h2>4+3 Framework: Sprouts</h2>
+        <table>
+          <thead>
+            <tr><th>Lever</th><th>Evaluation</th><th>Evidence</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Proposition</td><td>✅ Premium</td><td>Organic, health-focused</td></tr>
+            <tr><td>Negotiation</td><td>✅ Moderate</td><td>High-margin suppliers</td></tr>
+            <tr><td>Cost</td><td>❌ Higher</td><td>No scale economies</td></tr>
+            <tr><td>Differentiation</td><td>✅ High</td><td>Private label, store vibe</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Slide 5: Recommendations -->
+      <section>
+        <h2>Recommendations for Broulim’s</h2>
+        <ol>
+          <li><strong>Premium Fresh Focus</strong><br>Local meat, scratch bakery, farm signage</li>
+          <li><strong>Tech Experience</strong><br>App with loyalty + local box subscription</li>
+          <li><strong>ESOP Branding</strong><br>Promote 49% employee ownership</li>
+        </ol>
+      </section>
+
+      <!-- Slide 6: Conclusion -->
+      <section>
+        <h2>Conclusion</h2>
+        <ul>
+          <li>Sprouts wins on <strong>premium</strong>, not price</li>
+          <li>Broulim’s can <strong>replicate</strong> this via <em>fresh + local + culture</em></li>
+          <li>Next step: <strong>pilot premium fresh store</strong> with local storytelling</li>
+        </ul>
+      </section>
+
+      <!-- Slide 7: References -->
+      <section>
+        <h2>References</h2>
+        <ul class="cite">
+          <li>Sprouts Farmers Market. (2025). Annual Report 2024.</li>
+          <li>Walmart Inc. (2025). Annual Report 2024.</li>
+          <li>Kroger Co. (2025). Annual Report 2024.</li>
+          <li>National Center for Employee Ownership. (2023).</li>
+          <li>IBISWorld. (2024). Grocery Stores Industry Report.</li>
+        </ul>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize();
+
+    // Chart: Operating Margin
+    new Chart(document.getElementById('marginChart'), {
+      type: 'bar',
+      data: {
+        labels: ['Walmart', 'Sprouts', 'Kroger'],
+        datasets: [{
+          label: 'Operating Margin % (2024)',
+          data: [4.0, 6.7, 2.6],
+          backgroundColor: ['#0071ce', '#8db435', '#d7282f']
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: { display: true, text: 'Operating Margin Comparison (2024)' }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
